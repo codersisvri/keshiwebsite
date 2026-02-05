@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="keshilogo.webp" type="image/x-icon">
+    <title>Keshi</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ddd;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: url('keshi1.jpg') center/cover no-repeat;
+      color: #fff;
+      margin-top: 80px;
+      position: relative;
+    }
+
+    /* Overlay to make text pop */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+
+    .hero h1,
+    .hero p {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .shop-section {
+      padding: 100px 80px;
+      background: #000;
+    }
+
+    .shop-section h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .product {
+      background-color: #111;
+      border: 1px solid #222;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      border-color: #00ff99;
+    }
+
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .product h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .product p {
+      color: #aaa;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .product button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #00ff99;
+      color: #000;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .product button:hover {
+      background-color: #00cc7a;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 40px 0;
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+    .about-artist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 10%;
+  background-color: #111;
+  color: #fff;
+}
+
+.artist-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  max-width: 1000px;
+}
+
+.artist-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.artist-info {
+  flex: 1;
+}
+
+.artist-info h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.artist-info p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+.tour {
+  background-color: #000;
+  color: #fff;
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.tour h2 {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+}
+
+.tour-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tour-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #333;
+  padding: 25px 40px;
+  border-radius: 15px;
+  background-color: #111;
+  transition: all 0.3s ease;
+}
+
+.tour-card:hover {
+  transform: translateY(-5px);
+  border-color: #fff;
+}
+
+.tour-date h3 {
+  font-size: 1.6rem;
+  margin: 0;
+  color: #fff;
+}
+
+.tour-date p {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.tour-info h4 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #fff;
+}
+
+.tour-info p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.tickets-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tickets-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.tickets-btn.sold-out {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.newsletter {
+  background-color: #0a0a0a;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+.newsletter h2 {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.newsletter-form input {
+  padding: 10px 15px;
+  width: 220px;
+  border: none;
+  border-bottom: 1px solid #333;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form input:focus {
+  border-color: #00ff99;
+}
+
+.newsletter-form button {
+  padding: 8px 14px;
+  border: 1px solid #00ff99;
+  background: transparent;
+  color: #00ff99;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #00ff99;
+  color: #000;
+}
+
+
+
+  </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">Keshi</h1>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Music</a></li>
+          <li><a href="#">Tour</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <section class="hero">
+      <h1>OFFICIAL KESHI STORE</h1>
+      <p>Exclusive merch, limited editions, and all things Keshi.
+        Minimal. Modern. Iconic.</p>
+    </section>
+
+    <section class="shop-section">
+      <h2>FEATURED PRODUCTS</h2>
+      <div class="products">
+        <div class="product">
+          <img src="keshialbum.jpeg" alt="Keshi Album">
+          <h3>Product Name</h3>
+          <p>$80.00</p>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="keshialbum1.webp" alt="Keshi Album 1">
+          <h3>Product Name</h3>
+          <p>$65.00</p>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="keshialbum2.jpeg" alt="Keshi Album 2">
+          <h3>Product Name</h3>
+          <p>$50.00</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+    <section class="tour">
+      <h2>TOUR DATES</h2>
+      <div class="tour-list">
+
+        <div class="tour-card">
+          <div class="tour-date">
+            <h3>OCT 21</h3>
+            <p>2025</p>
+          </div>
+          <div class="tour-info">
+            <h4>Los Angeles, CA</h4>
+            <p>The Wiltern Theatre</p>
+          </div>
+          <button class="tickets-btn">BUY TICKETS</button>
+        </div>
+
+        <div class="tour-card">
+          <div class="tour-date">
+            <h3>NOV 03</h3>
+            <p>2025</p>
+          </div>
+          <div class="tour-info">
+            <h4>New York, NY</h4>
+            <p>Radio City Music Hall</p>
+          </div>
+          <button class="tickets-btn">BUY TICKETS</button>
+        </div>
+
+        <div class="tour-card">
+          <div class="tour-date">
+            <h3>DEC 15</h3>
+            <p>2025</p>
+          </div>
+          <div class="tour-info">
+            <h4>Tokyo, Japan</h4>
+            <p>Shibuya O-East</p>
+          </div>
+          <button class="tickets-btn sold-out">SOLD OUT</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about-artist">
+      <div class="artist-card">
+        <div class="artist-image">
+          <!-- Add your image here -->
+          <img src="keshi.jpg" alt="Keshi" />
+        </div>
+        <div class="artist-info">
+          <h2>About Keshi</h2>
+          <p>Keshi (Casey Luong) is a singer-songwriter, producer, and
+            multi-instrumentalist known for his smooth blend of R&B,
+            lo-fi, and indie pop. His music explores vulnerability,
+            self-reflection, and the ache of love — all wrapped in
+            dreamy melodies and minimal aesthetics.</p>
+          <p>From viral hits to soulful EPs, Keshi’s sound is intimate
+            and cinematic — an honest voice for a restless
+            generation.</p>
+        </div>
+      </div>
+    </section>
+    <section class="newsletter">
+      <h2>STAY UPDATED</h2>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">→</button>
+      </form>
+    </section>
+
+    <footer>
+      © 2025 Keshi Store — All Rights Reserved.
+    </footer>
+
+    <script>
+    document.querySelectorAll('.product button').forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Item added to cart (demo only)');
+      });
+    });
+    document.querySelector(".newsletter-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Subscribed successfully 💚");
+});
+
+  </script>
+  </body>
+</html>
